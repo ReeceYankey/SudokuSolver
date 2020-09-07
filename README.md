@@ -1,5 +1,5 @@
 # SudokuSolver
-Solves a sudoku puzzle using recursion to backtrack. It also has the ability to take a screenshot abd automatically solve it for you
+Solves a sudoku puzzle using recursion to backtrack. It also has the ability to take a screenshot and automatically solve it for you
 # Dependencies
 use pip install on the following:
 1. Pillow
