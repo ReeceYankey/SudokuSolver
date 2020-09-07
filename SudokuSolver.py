@@ -1,4 +1,4 @@
-import pprint
+from pprint import pprint
 from PerformanceTimer import timeit
 
 
@@ -41,7 +41,7 @@ def solve(board):
 
     for i in range(1, 10):
         board[r][c] = i
-        # pprint.pprint(board)
+        # pprint(board)
         if verify(board):
             if solve(board):
                 return True
@@ -51,7 +51,6 @@ def solve(board):
     return False
 
 
-@timeit
 def verify(board):
     # check cols, rows, boxes for any inconsistencies
     for n in range(9):
@@ -80,7 +79,7 @@ def main():
             [0, 0, 0, 0, 0, 2, 7, 6, 0],
             [9, 6, 3, 0, 0, 0, 0, 2, 0]]
     solve(grid)
-    pprint.pprint(grid)
+    pprint(grid)
 
 
 if __name__ == '__main__':
