@@ -10,6 +10,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 # Include the above line, if you don't have tesseract executable in your PATH
 OFFSET = 5  # how much of the cell edge to cut off of the image
 
+
 # gether the data for a board from a PIL.Image
 def gather_grid_data(image):
     grid = []
@@ -21,7 +22,7 @@ def gather_grid_data(image):
             x = c*cell_size
             y = r*cell_size
             temp_image = image.crop([x+OFFSET, y+OFFSET, x + cell_size-OFFSET, y + cell_size-OFFSET])
-            temp_image.save('debug/'+str(r)+str(c)+'.jpg', "JPEG")
+            # temp_image.save('debug/'+str(r)+str(c)+'.jpg', "JPEG")
             text = pytesseract.image_to_string(temp_image, lang='eng',
                                         config='--psm 10 --oem 3 -c tessedit_char_whitelist=123456789')
             if text == '':
@@ -34,10 +35,11 @@ def gather_grid_data(image):
         grid.append(row_data)
     return grid
 
+
 # take a screenshot at the specified position
 def screenshot(x1, y1, x2, y2):
     image = ImageGrab.grab().crop([x1, y1, x2, y2])
-    image.save("screenshot.jpg", "JPEG")
+    # image.save("screenshot.jpg", "JPEG")
     return image
 
 
