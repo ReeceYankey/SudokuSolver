@@ -15,7 +15,7 @@ def timeit(func):
         end = time.time()
         times_executed += 1
         total_time += end - start
-        print('func:%s  |  time elapsed:%f  |  total time:%f  |  executed:%d  |  average:%f' %
+        print('func:%s  |  time elapsed:%fms  |  total time:%fms  |  executed:%d  |  average:%fms' %
               (func.__name__, (end - start)*1000, total_time*1000, times_executed, total_time/times_executed*1000))
         return return_val
     return wrapper

@@ -51,6 +51,7 @@ def solve(board):
     return False
 
 
+@timeit
 def verify(board):
     # check cols, rows, boxes for any inconsistencies
     for n in range(9):
