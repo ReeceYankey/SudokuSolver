@@ -1,7 +1,7 @@
 import time
 verbose = False
 
-
+# a decorator that shows statistics about a function's performance
 def timeit(func):
     times_executed = 0
     total_time = 0

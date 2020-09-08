@@ -15,22 +15,23 @@ OFFSET = 5  # how much of the cell edge to cut off of the image
 def gather_grid_data(image):
     grid = []
     w, h = image.size
-    cell_size = w/9
+    cell_size = w / 9
     for r in range(9):
         row_data = []
         for c in range(9):
-            x = c*cell_size
-            y = r*cell_size
-            temp_image = image.crop([x+OFFSET, y+OFFSET, x + cell_size-OFFSET, y + cell_size-OFFSET])
+            x = c * cell_size
+            y = r * cell_size
+            temp_image = image.crop([x + OFFSET, y + OFFSET, x + cell_size - OFFSET, y + cell_size - OFFSET])
             # temp_image.save('debug/'+str(r)+str(c)+'.jpg', "JPEG")
             text = pytesseract.image_to_string(temp_image, lang='eng',
-                                        config='--psm 10 --oem 3 -c tessedit_char_whitelist=123456789')
+                                               config='--psm 10 --oem 3 -c tessedit_char_whitelist=123456789')
             if text == '':
                 row_data.append(0)
             elif 1 <= int(text) <= 9:
                 row_data.append(int(text))
             else:
-                raise RuntimeError(f"There was an error in data collection: row {r}, col {c} was incorrectly scanned as {text}")
+                raise RuntimeError(
+                    f"There was an error in data collection: row {r}, col {c} was incorrectly scanned as {text}")
 
         grid.append(row_data)
     return grid
