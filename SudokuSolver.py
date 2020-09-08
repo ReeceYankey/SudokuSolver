@@ -39,10 +39,9 @@ def solve(board):
     if r is None:  # if no more zeroes
         return True
 
-    for i in range(1, 10):
-        board[r][c] = i
-        # pprint(board)
-        if verify(board):
+    for n in range(1, 10):
+        if is_valid_move(board, r, c, n):
+            board[r][c] = n
             if solve(board):
                 return True
 
@@ -51,20 +50,12 @@ def solve(board):
     return False
 
 
-def verify(board):
-    # check cols, rows, boxes for any inconsistencies
-    for n in range(9):
-        row = get_row(board, n)
-        col = get_col(board, n)
-        square = get_square(board, n)
-        for i in range(1, 10):
-            if row.count(i) > 1:
-                return False
-            if col.count(i) > 1:
-                return False
-            if square.count(i) > 1:
-                return False
-    return True
+def is_valid_move(board, r, c, val):
+    row = get_row(board, r)
+    col = get_col(board, c)
+    sq_num = c // 3 + 3 * (r // 3)
+    square = get_square(board, sq_num)
+    return row.count(val) <= 1 and col.count(val) <= 1 and square.count(val) <= 1
 
 
 @timeit
