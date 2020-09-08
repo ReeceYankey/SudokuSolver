@@ -1,5 +1,5 @@
 # SudokuSolver
-Solves a sudoku puzzle using recursion to backtrack. It also has the ability to take a screenshot of a puzzle and automatically solve it for you using tesseract. I also made a decorator in PerformanceTimer.py to gauge the performance of the algorithm and help me identify bottlenecks
+Solves a sudoku puzzle using a backtracking algorithm. It also has the ability to take a screenshot of a puzzle and automatically solve it for you using tesseract. I also made a decorator in PerformanceTimer.py to gauge the performance of the algorithm and help me identify bottlenecks
 # Dependencies
 use pip install on the following:
 1. Pillow
