@@ -32,7 +32,7 @@ def find_next_zero(board):
 
 
 def solve(board):
-    # find first 0
+    # find first empty cell
     # loop 1-9 until correct
     # if not correct, go back up the stack
     r, c = find_next_zero(board)
