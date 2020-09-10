@@ -2,10 +2,12 @@ from pprint import pprint
 from PerformanceTimer import timeit
 
 
+# get the array of numbers in a given row
 def get_row(board, r):
     return board[r]
 
 
+# get the array of numbers in a given column
 def get_col(board, c):
     arr = []
     for r in range(9):
@@ -13,6 +15,10 @@ def get_col(board, c):
     return arr
 
 
+# get the array of numbers in a given 3x3 square following the pattern:
+# 0 1 2
+# 3 4 5
+# 6 7 8
 def get_square(board, n):
     arr = []
     start_r = 3 * (n // 3)
@@ -23,6 +29,7 @@ def get_square(board, n):
     return arr
 
 
+# finds the next empty square on the board
 def find_next_zero(board):
     for row in range(len(board)):
         for col in range(len(board[row])):
@@ -31,6 +38,8 @@ def find_next_zero(board):
     return None, None
 
 
+# attempts to solve the board using backtracking, and returns whether it was
+# successful
 def solve(board):
     # find first empty cell
     # loop 1-9 until correct
@@ -50,6 +59,7 @@ def solve(board):
     return False
 
 
+# returns whether setting the specified row and column to val would be valid
 def is_valid_move(board, r, c, val):
     row = get_row(board, r)
     col = get_col(board, c)
