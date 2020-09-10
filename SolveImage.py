@@ -1,4 +1,3 @@
-# libraries
 from pprint import pprint
 from PIL import ImageGrab
 import pytesseract
@@ -11,18 +10,22 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 OFFSET = 5  # how much of the cell edge to cut off of the image
 
 
-# gether the data for a board from a PIL.Image
+# gather the data for a board from an image
 def gather_grid_data(image):
     grid = []
     w, h = image.size
     cell_size = w / 9
+    
+    # loops over all cells of grid
     for r in range(9):
         row_data = []
         for c in range(9):
+            #crop the cell
             x = c * cell_size
             y = r * cell_size
             temp_image = image.crop([x + OFFSET, y + OFFSET, x + cell_size - OFFSET, y + cell_size - OFFSET])
-            # temp_image.save('debug/'+str(r)+str(c)+'.jpg', "JPEG")
+            
+            # extract the text
             text = pytesseract.image_to_string(temp_image, lang='eng',
                                                config='--psm 10 --oem 3 -c tessedit_char_whitelist=123456789')
             if text == '':
@@ -45,18 +48,22 @@ def screenshot(x1, y1, x2, y2):
 
 
 if __name__ == "__main__":
+    # get the bounds of the sudoku image
     print("move mouse to top left of sudoku puzzle and press y")
     keyboard.wait('y')
     textPos1 = mouse.get_position()
     print("move mouse to bottom right of sudoku puzzle and press y")
     keyboard.wait('y')
     textPos2 = mouse.get_position()
-
+    
+    # process the image
     image = screenshot(textPos1[0], textPos1[1], textPos2[0], textPos2[1])
     print("Processing image...")
     board = gather_grid_data(image)
     print("The scanned sudoku:")
     pprint(board)
+    
+    # solve the puzzle
     print("Solving...")
     if solve(board):
         print("Successfully solved!")
