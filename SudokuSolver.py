@@ -65,7 +65,7 @@ def is_valid_move(board, r, c, val):
     col = get_col(board, c)
     sq_num = c // 3 + 3 * (r // 3)
     square = get_square(board, sq_num)
-    return row.count(val) <= 1 and col.count(val) <= 1 and square.count(val) <= 1
+    return row.count(val) == 0 and col.count(val) == 0 and square.count(val) == 0
 
 
 @timeit
