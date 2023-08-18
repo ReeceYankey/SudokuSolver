@@ -5,8 +5,9 @@ from SudokuSolver import solve
 import mouse
 import keyboard
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
 # Include the above line, if you don't have tesseract executable in your PATH
+
 OFFSET = 5  # how much of the cell edge to cut off of the image
 
 

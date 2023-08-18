@@ -3,11 +3,15 @@ Solves a sudoku puzzle using a backtracking algorithm. It also has the ability t
 # Dependencies
 Created on Python 3.7
 
-use pip install on the following:
-1. Pillow
-2. pytesseract
+
 # Setup
-1. install [tesseract-ocr](https://tesseract-ocr.github.io/tessdoc/Downloads.html)
-2. modify the directory for tesseract in SolveImage.py if necessary
+- `pip install Pillow pytesseract mouse keyboard`
+
+Windows
+- install [tesseract-ocr](https://tesseract-ocr.github.io/tessdoc/Downloads.html)
+- if it isn't in your PATH, enter the directory for tesseract in SolveImage.py 
+
+Linux
+- `apt install tesseract-ocr`
 # Instructions
 Run SolveImage.py and follow the directions in the console
